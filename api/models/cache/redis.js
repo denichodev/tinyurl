@@ -1,4 +1,4 @@
-import createRedis from 'shared/create-redis.js';
+import createRedis from 'shared/bull/create-redis.js';
 
 const config =
   process.env.NODE_ENV === 'production' && !process.env.FORCE_DEV

@@ -23,6 +23,7 @@
   "homepage": "https://github.com/denichodev/tinyurl#readme",
   "dependencies": {
     "body-parser": "1.18.2",
+    "bull": "3.3.10",
     "cookie-parser": "1.4.3",
     "debug": "3.1.0",
     "express": "4.16.3",
@@ -37,6 +38,10 @@
   },
   "devDependencies": {
     "backpack-core": "0.7.0",
-    "cross-env": "5.1.4"
+    "cross-env": "5.1.4",
+    "eslint-config-airbnb": "16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0"
   }
 }

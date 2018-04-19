@@ -57,3 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+build-api
+rethinkdb_data
+.DS_Store

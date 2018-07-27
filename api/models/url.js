@@ -1,6 +1,6 @@
 import { db } from './db';
 
-const getUrlById = ({ input: { id } }) => {
+export const getUrlById = ({ input: { id } }) => {
   return db
     .table('urls')
     .get(id)

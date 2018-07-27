@@ -1,37 +1,42 @@
-console.log('Server starting...');
 require('now-env');
 const debug = require('debug')('api');
+debug('logging with debug enabled!');
+console.log('Server starting...');
+
 import express from 'express';
 import { createServer } from 'http';
-import redis from './models/cache/redis';
-
-debug('logging with debug enabled!');
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
+import apiRoutes from './routes/api';
 
 const app = express();
 
-import apiRoutes from './routes/api';
 app.use('/api', apiRoutes);
 
-// import { createUrl } from './models/url';
-import { generateTicket, getTicket } from './models/ticket';
+// import { generateTicket } from './jobs';
+// import { addQueue } from './jobs/utils';
+// import processGenerateTicket from './queues/processGenerateTicket';
+// import { getTicket } from './queues/processCacheTicket';
+// import createQueue from 'shared/bull/create-queue';
+// import { GENERATE_TICKET } from './queues/constants';
 
-generateTicket(10);
+// const q = createQueue(GENERATE_TICKET, {
+//   removeOnComplete: true,
+//   removeOnFail: true,
+//   attempts: 1
+// });
+
 // (async () => {
-//   setInterval(() => {
-//     getTicket().then(res => {
-//       console.log(
-//         `Got ticket: ${res.ticket}, there are ${res.ticketLeft} tickets left.`
-//       );
-//     });
-//   }, 100);
+//   q.process(processGenerateTicket);
+//   generateTicket();
+//   // addQueue(GENERATE_TICKET, { amount: 5000 });
+
+//   setInterval(async () => {
+//     const ticket = await getTicket();
+//     console.log(`Got ticket: ${ticket.ticket} with ${ticket.ticketLeft} left`);
+//   }, 5);
 // })();
 
-// generateTicket(100).then(res => console.log('res', res) || res);
-// generateTicket(100);
 
-// console.log('process env api:', process.env);
-
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
 const server = createServer(app);
 
 server.listen(PORT);
